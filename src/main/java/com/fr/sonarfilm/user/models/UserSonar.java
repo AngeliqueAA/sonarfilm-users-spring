@@ -20,7 +20,7 @@ public class UserSonar {
 	private String password;
 	
 	 @OneToOne(mappedBy = "userSonar", cascade = CascadeType.ALL)
-	    private UserSonarInformation userSonarInfo;
+	    private UserSonarInformationProfile userSonarInfo;
 	
 	 @OneToOne(mappedBy = "userSonar", cascade = CascadeType.ALL)
 	    private UserSonarCinematicProfile userSonarCine;
@@ -35,10 +35,6 @@ public class UserSonar {
 		this.password = password;
 	}
 
-
-	
-	
-	
 	public UserSonarCinematicProfile getUserSonarCine() {
 		return userSonarCine;
 	}
@@ -49,12 +45,12 @@ public class UserSonar {
 	}
 
 
-	public UserSonarInformation getUserSonarInfo() {
+	public UserSonarInformationProfile getUserSonarInfo() {
 		return userSonarInfo;
 	}
 
 
-	public void setUserSonarInfo(UserSonarInformation userSonarInfo) {
+	public void setUserSonarInfo(UserSonarInformationProfile userSonarInfo) {
 		this.userSonarInfo = userSonarInfo;
 	}
 

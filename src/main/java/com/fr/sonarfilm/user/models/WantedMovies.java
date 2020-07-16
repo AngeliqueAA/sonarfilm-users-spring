@@ -24,7 +24,7 @@ public class WantedMovies {
 	@JsonIgnore
     Set<UserSonarCinematicProfile> userCine;
 	
-	
+	private String year;
 	
 	
 	public Set<UserSonarCinematicProfile> getUserCine() {
@@ -37,10 +37,11 @@ public class WantedMovies {
 		public WantedMovies() {
 		}
 	
-	public WantedMovies(Long idMovie, String movieName) {
+	public WantedMovies(Long idMovie, String movieName, String year) {
 
 		this.idMovie = idMovie;
 		this.movieName = movieName;
+		this.year = year;
 	}
 
 
@@ -48,8 +49,6 @@ public class WantedMovies {
 	public void setUserCine(Set<UserSonarCinematicProfile> userCine) {
 		this.userCine = userCine;
 	}
-
-	
 
 	public long getId() {
 		return id;
@@ -59,11 +58,19 @@ public class WantedMovies {
 		this.id = id;
 	}
 
-	public long getIdMovie() {
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public Long getIdMovie() {
 		return idMovie;
 	}
 
-	public void setIdMovie(long idMovie) {
+	public void setIdMovie(Long idMovie) {
 		this.idMovie = idMovie;
 	}
 
@@ -74,6 +81,10 @@ public class WantedMovies {
 	public void setMovieName(String movieName) {
 		this.movieName = movieName;
 	}
+
+	
+
+
 
 	
 

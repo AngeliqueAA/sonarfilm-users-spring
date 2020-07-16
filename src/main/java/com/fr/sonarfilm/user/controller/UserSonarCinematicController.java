@@ -21,7 +21,7 @@ import com.fr.sonarfilm.user.models.WantedMovies;
 @CrossOrigin(origins = "*") 
 @RequestMapping(path="/apiusers/cineprofile")
 public class UserSonarCinematicController {
-	
+
 	
 	@Autowired
 	private UserSonarCinematicRepository userSonarCineRepo;
@@ -36,14 +36,12 @@ public class UserSonarCinematicController {
 	 public UserSonarCinematicProfile getUserSonarCineById(@PathVariable("id") Long id) {
 		// return userSonarCineRepo.findById(id);
 		 	
-		 return null;
-		  		}
+		 return null; }
 	
-	@PostMapping("wantedmovie/add/{username}/{movieId}/{movieName}")
-    void addMovie(@PathVariable("username") String username, @PathVariable("movieId") Long movieId, @PathVariable("movieName") String movieName ) {
+	@PostMapping("wantedmovie/add/{username}/{movieId}/{movieName}/{year}")
+    void addMovie(@PathVariable("username") String username, @PathVariable("movieId") Long movieId, @PathVariable("movieName") String movieName, @PathVariable("year") String year ) {
 	
-	
-		
+
 	UserSonar userSonar = userRepository.findByUsername(username);
 	//Optional<UserSonarCinematicProfile> userCine = userSonarCineRepo.findById(userSonar.getId());
 	boolean moviesExistsOrNot = wantedMovieRepo.existsByIdMovie(movieId);
@@ -52,7 +50,7 @@ public class UserSonarCinematicController {
 	if(moviesExistsOrNot) {
 		 wMovies = wantedMovieRepo.findByIdMovie(movieId);	
 	} else {
-		wMovies = new WantedMovies(movieId, movieName);
+		wMovies = new WantedMovies(movieId, movieName, year);
 		wantedMovieRepo.save(wMovies);
 	}
 	
@@ -70,6 +68,13 @@ public class UserSonarCinematicController {
 		
 		
 		return movies;
+	}
+	
+	@GetMapping(value = "/wantedmovie/findmovie/{id}")
+	public boolean getWantedMoviesById(@PathVariable("movieId") Long movieId) {
+	
+		
+		return false;
 	}
 	
 

@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-public class UserSonarInformation {
+public class UserSonarInformationProfile {
 
 	@Id
 	private Long id;
@@ -27,13 +27,13 @@ public class UserSonarInformation {
 	
 
 	
-	public UserSonarInformation() {
+	public UserSonarInformationProfile() {
 		// TODO Auto-generated constructor stub
 	}
 	
 
 
-	public UserSonarInformation(String role, String email) {
+	public UserSonarInformationProfile(String role, String email) {
 		super();
 		this.role = role;
 		this.email = email;

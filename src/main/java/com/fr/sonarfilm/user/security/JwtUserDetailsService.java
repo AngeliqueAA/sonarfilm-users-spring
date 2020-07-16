@@ -16,7 +16,7 @@ import com.fr.sonarfilm.user.dao.UserSonarRepository;
 import com.fr.sonarfilm.user.exception.UserAlreadyExistAuthenticationException;
 import com.fr.sonarfilm.user.models.UserSonar;
 import com.fr.sonarfilm.user.models.UserSonarCinematicProfile;
-import com.fr.sonarfilm.user.models.UserSonarInformation;
+import com.fr.sonarfilm.user.models.UserSonarInformationProfile;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
@@ -48,7 +48,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 		if(userRepo.existsByUsername(newUserUsername)) {throw new UsernameNotFoundException("Username already exists : " + newUserUsername);} 
 
 		else {
-			UserSonarInformation userSonarInfo = new UserSonarInformation();
+			UserSonarInformationProfile userSonarInfo = new UserSonarInformationProfile();
 			UserSonarCinematicProfile userCineProfile = new UserSonarCinematicProfile();
 			
 			
