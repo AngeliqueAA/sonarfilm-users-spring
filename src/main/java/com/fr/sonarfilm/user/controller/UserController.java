@@ -41,7 +41,7 @@ public class UserController {
 		  return convertToDto(userRepository.findByUsername(username));
 		}
 	 
-
+	 
 	@GetMapping("/users")
 	public @ResponseBody List<UserSonarDTO> getAll(){
 		List<UserSonar> users = (List<UserSonar>) userRepository.findAll();

@@ -2,7 +2,6 @@ package com.fr.sonarfilm.user.models;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,14 +24,18 @@ public class WantedMovies {
     Set<UserSonarCinematicProfile> userCine;
 	
 	private String year;
+	private Long idMovie;
+	private String movieName;
 	
 	
+	
+	
+
 	public Set<UserSonarCinematicProfile> getUserCine() {
 		return userCine;
 	}
 
-		private Long idMovie;
-		private String movieName;
+	
 		
 		public WantedMovies() {
 		}

@@ -6,4 +6,8 @@ import com.fr.sonarfilm.user.models.LikedMovies;
 
 public interface LikedMoviesRepository extends CrudRepository<LikedMovies, Long> {
 
+	LikedMovies findByIdMovie(Long movieId);
+
+	boolean existsByIdMovie(Long movieId);
+
 }

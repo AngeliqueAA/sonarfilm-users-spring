@@ -16,7 +16,6 @@ public class UserSonarInformationProfile {
 	private Long id;
 	
 	private String role;
-	private String email;
 	
 	@OneToOne(fetch = FetchType.LAZY)
     @MapsId
@@ -33,10 +32,10 @@ public class UserSonarInformationProfile {
 	
 
 
-	public UserSonarInformationProfile(String role, String email) {
+	public UserSonarInformationProfile(String role) {
 		super();
 		this.role = role;
-		this.email = email;
+
 	
 	}
 
@@ -66,14 +65,7 @@ public class UserSonarInformationProfile {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-	
+
 	
 	
 }

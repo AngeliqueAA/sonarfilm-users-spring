@@ -35,10 +35,22 @@ public class UserSonarCinematicProfile {
 			  joinColumns = @JoinColumn(name = "userSonarCinematicProfile_id"), 
 			  inverseJoinColumns = @JoinColumn(name = "wantedMovies_id"))
     Set<WantedMovies> userMovies;
+
 	
-/*	private LikedMovies likedMovies;
-	private SeenMovies seenMovies;
-	private WantedMovies wantedMovies; */
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(
+			  name = "usercine_likedmovies", 
+			  joinColumns = @JoinColumn(name = "userSonarCinematicProfile_id"), 
+			  inverseJoinColumns = @JoinColumn(name = "likedMovies_id"))
+    Set<LikedMovies> userLikedMovies;
+	
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(
+			  name = "usercine_seenmovies", 
+			  joinColumns = @JoinColumn(name = "userSonarCinematicProfile_id"), 
+			  inverseJoinColumns = @JoinColumn(name = "seenMovies_id"))
+    Set<SeenMovies> userSeenMovies;
+	
 	
 	public UserSonarCinematicProfile() {
 		// TODO Auto-generated constructor stub
@@ -64,29 +76,31 @@ public class UserSonarCinematicProfile {
 	public void setUserMovies(Set<WantedMovies> userMovies) {
 		this.userMovies = userMovies;
 	}
+
+
+	public Set<LikedMovies> getUserLikedMovies() {
+		return userLikedMovies;
+	}
+
+
+	public void setUserLikedMovies(Set<LikedMovies> userLikedMovies) {
+		this.userLikedMovies = userLikedMovies;
+	}
+
+
+	public Set<SeenMovies> getUserSeenMovies() {
+		return userSeenMovies;
+	}
+
+
+	public void setUserSeenMovies(Set<SeenMovies> userSeenMovies) {
+		this.userSeenMovies = userSeenMovies;
+	}
+
+
 	
 	
-	
-/*	public LikedMovies getLikedMovies() {
-		return likedMovies;
-	}
-	public void setLikedMovies(LikedMovies likedMovies) {
-		this.likedMovies = likedMovies;
-	}
-	public SeenMovies getSeenMovies() {
-		return seenMovies;
-	}
-	public void setSeenMovies(SeenMovies seenMovies) {
-		this.seenMovies = seenMovies;
-	}
-	public WantedMovies getWantedMovies() {
-		return wantedMovies;
-	}
-	public void setWantedMovies(WantedMovies wantedMovies) {
-		this.wantedMovies = wantedMovies;
-	}
-	
-	*/
+
 	
 	
 }

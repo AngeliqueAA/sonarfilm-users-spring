@@ -60,7 +60,7 @@ class UserApplicationTests {
 	 @Test
 		public void shouldReturn401IfRegisterWithUserSonar() throws Exception { 
 			
-			 UserSonar newUser = new UserSonar("CorinneDu82", "coco");
+			 UserSonar newUser = new UserSonar("CorinneDu82", "coco", "coco@coco.com");
 			 String jsonRequest = mapper.writeValueAsString(newUser);
 			 		 
 		this.mockMvc
@@ -76,7 +76,7 @@ class UserApplicationTests {
 	 @Test
 	public void shouldReturn200IfRegisterWithUserSonar() throws Exception { 
 		
-		 UserSonar newUser = new UserSonar("Micheldu78", "michou");
+		 UserSonar newUser = new UserSonar("Micheldu78", "michou", "michou@coco.com");
 		 String jsonRequest = mapper.writeValueAsString(newUser);
 		 		 
 	this.mockMvc
@@ -91,7 +91,7 @@ class UserApplicationTests {
 	 @Test
 	    public void whenConvertUserEntityToMovieDto_thenCorrect() {
 		 UserSonarDTO userSonarDTO = new UserSonarDTO();
-		 UserSonar user = new UserSonar("MichelineCinema", "cinemaMicheline123");
+		 UserSonar user = new UserSonar("MichelineCinema", "cinemaMicheline123", "michmich@mich.com");
 				 userSonarDTO = convertToDto(user);
 	        assertEquals(user.getUsername(), userSonarDTO.getUsername());
 

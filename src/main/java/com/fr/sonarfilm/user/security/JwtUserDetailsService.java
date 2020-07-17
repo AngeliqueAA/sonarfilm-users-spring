@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.fr.sonarfilm.user.dao.UserSonarInformationRepository;
 import com.fr.sonarfilm.user.dao.UserSonarRepository;
@@ -40,31 +42,30 @@ public class JwtUserDetailsService implements UserDetailsService {
 				new ArrayList<>());
 	}
 
-	public String save(UserSonar user) throws UserAlreadyExistAuthenticationException {
-
+	public HttpStatus save(UserSonar user) throws UserAlreadyExistAuthenticationException {
 		
 		String newUserUsername = user.getUsername();
+		String newUsermail = user.getMail();
 
-		if(userRepo.existsByUsername(newUserUsername)) {throw new UsernameNotFoundException("Username already exists : " + newUserUsername);} 
+		if(userRepo.existsByUsername(newUserUsername)) {return HttpStatus.IM_USED;} 
 
 		else {
 			UserSonarInformationProfile userSonarInfo = new UserSonarInformationProfile();
 			UserSonarCinematicProfile userCineProfile = new UserSonarCinematicProfile();
-			
-			
-			
 			UserSonar newUser = new UserSonar();
+			
 			newUser.setUsername(newUserUsername);
+			newUser.setMail(newUsermail);
 			newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
+			
+			
 			newUser.setUserSonarInfo(userSonarInfo);
 			newUser.setUserSonarCine(userCineProfile);
 			userSonarInfo.setUserSonar(newUser);
 			userCineProfile.setUserSonar(newUser);
 			userRepo.save(newUser);
-		
-			//UserSonarInformation userSonarInfo = userInfoRepo.findById(newUser.getId);
-			// usi.setMail = blabla
-			return newUser.getUsername();
+
+			return HttpStatus.ACCEPTED;
 		}
 	}
 

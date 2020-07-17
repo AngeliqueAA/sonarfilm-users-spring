@@ -6,7 +6,14 @@ public class UserSonarDTO {
 	
 	private String username;
 	private String password;
+	private String mail;
 	
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
 	private UserSonarInformationProfileDTO userSonarInfo;
 	private UserSonarCinematicProfileDTO userSonarCine;
 	

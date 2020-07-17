@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 
@@ -16,8 +19,18 @@ public class UserSonar {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	
+	
+	@NotNull
 	private String username;
+	
+	@NotNull
+	@Size(min = 6)
 	private String password;
+	
+	@NotNull
+	@Email
+	private String mail;
 	
 	 @OneToOne(mappedBy = "userSonar", cascade = CascadeType.ALL)
 	    private UserSonarInformationProfile userSonarInfo;
@@ -25,14 +38,16 @@ public class UserSonar {
 	 @OneToOne(mappedBy = "userSonar", cascade = CascadeType.ALL)
 	    private UserSonarCinematicProfile userSonarCine;
 
+	 
 	public UserSonar() {
 		// TODO Auto-generated constructor stub
 	}
 
 	
-	public UserSonar(String username, String password) {
+	public UserSonar(String username, String password, String mail) {
 		this.username = username;
 		this.password = password;
+		this.mail = mail;
 	}
 
 	public UserSonarCinematicProfile getUserSonarCine() {
@@ -82,7 +97,16 @@ public class UserSonar {
 	}
 
 
-	// constructeurs si on veut préremplir bean
+	public String getMail() {
+		return mail;
+	}
+
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+
 	
 	
 	

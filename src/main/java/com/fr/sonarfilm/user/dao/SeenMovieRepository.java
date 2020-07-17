@@ -6,4 +6,8 @@ import com.fr.sonarfilm.user.models.SeenMovies;
 
 public interface SeenMovieRepository extends CrudRepository<SeenMovies, Long> {
 
+	SeenMovies findByIdMovie(Long movieId);
+
+	boolean existsByIdMovie(Long movieId);
+
 }
