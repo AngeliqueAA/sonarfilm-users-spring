@@ -9,5 +9,4 @@ public interface UserSonarRepository extends CrudRepository<UserSonar, Long> {
 	
 	UserSonar findByUsername(String username);
 	Boolean existsByUsername(String username);
-	
 }
