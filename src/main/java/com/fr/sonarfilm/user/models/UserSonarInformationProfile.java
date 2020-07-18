@@ -10,13 +10,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-public class UserSonarInformation {
+public class UserSonarInformationProfile {
 
 	@Id
 	private Long id;
 	
 	private String role;
-	private String email;
 	
 	@OneToOne(fetch = FetchType.LAZY)
     @MapsId
@@ -27,16 +26,16 @@ public class UserSonarInformation {
 	
 
 	
-	public UserSonarInformation() {
+	public UserSonarInformationProfile() {
 		// TODO Auto-generated constructor stub
 	}
 	
 
 
-	public UserSonarInformation(String role, String email) {
+	public UserSonarInformationProfile(String role) {
 		super();
 		this.role = role;
-		this.email = email;
+
 	
 	}
 
@@ -66,14 +65,7 @@ public class UserSonarInformation {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-	
+
 	
 	
 }

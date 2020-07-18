@@ -9,33 +9,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fr.sonarfilm.user.dao.WantedMovieRepository;
-import com.fr.sonarfilm.user.models.WantedMovies;
+import com.fr.sonarfilm.user.dao.LikedMoviesRepository;
+import com.fr.sonarfilm.user.models.LikedMovies;
 
 
 
 @RestController
 @CrossOrigin(origins = "*") 
-@RequestMapping("/apiusers/wantedmovies")
-public class WantedMovieController {
+@RequestMapping("/apiusers/likedmovies")
+public class LikedMovieController {
+	
 	
 	@Autowired 
-	private WantedMovieRepository wantedMovieRepo;
+	private LikedMoviesRepository likedMovieRepo;
 	
 	@PostMapping("/add")
-    void addWantedMovies(@RequestBody WantedMovies wMovies) {
-		wantedMovieRepo.save(wMovies);
+    void addLikedMovies(@RequestBody LikedMovies lMovies) {
+		likedMovieRepo.save(lMovies);
     }
 	
+	
 	@GetMapping(value = "/{id}")
-	public WantedMovies getMovieByMovieId(@PathVariable("movieId") Long movieId) {
-	  return wantedMovieRepo.findByIdMovie(movieId);
+	public LikedMovies getMovieByMovieId(@PathVariable("movieId") Long movieId) {
+	  return likedMovieRepo.findByIdMovie(movieId);
 	}
 	
 	@GetMapping(value = "exists/{movieId}")
 	public boolean isMovieIdAlreadyHere(@PathVariable("movieId") Long movieId) {
-	  return wantedMovieRepo.existsByIdMovie(movieId);
+	  return likedMovieRepo.existsByIdMovie(movieId);
 	}
+	
 	
 
 }
