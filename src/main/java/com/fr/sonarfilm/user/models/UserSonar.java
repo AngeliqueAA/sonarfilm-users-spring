@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -22,13 +23,16 @@ public class UserSonar {
 	
 	
 	@NotNull
+	@NotBlank
 	private String username;
 	
 	@NotNull
+	@NotBlank
 	@Size(min = 6)
 	private String password;
 	
 	@NotNull
+	@NotBlank
 	@Email
 	private String mail;
 	

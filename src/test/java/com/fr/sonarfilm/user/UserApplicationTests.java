@@ -2,6 +2,7 @@ package com.fr.sonarfilm.user;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -87,6 +88,7 @@ class UserApplicationTests {
 				
 	}
 
+	 
 	 
 	 @Test
 	    public void whenConvertUserEntityToMovieDto_thenCorrect() {
