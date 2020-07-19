@@ -7,7 +7,7 @@ It use JWT authentification.
 
 This project deals with user. Register them to a MySQL database with encrypted password and generate a token when connected. So, the real password is never seen by anyone even the database administrator.
 
-The User have two profile : **a cinematic profile** to save liked, seen and wanted movies and an information profile to save administrative information.
+The User has two profiles : **a cinematic profile** to save liked, seen and wanted movies and an information profile to save administrative information.
 
 
 Here a sample of the URI and the comportment :
