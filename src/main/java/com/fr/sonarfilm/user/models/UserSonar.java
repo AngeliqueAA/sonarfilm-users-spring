@@ -12,6 +12,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 
 public class UserSonar {
@@ -29,6 +31,7 @@ public class UserSonar {
 	@NotNull
 	@NotBlank
 	@Size(min = 6)
+	@JsonIgnore
 	private String password;
 	
 	@NotNull

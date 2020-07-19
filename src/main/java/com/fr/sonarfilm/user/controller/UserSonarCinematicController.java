@@ -127,6 +127,7 @@ public class UserSonarCinematicController {
 			lMovies = likedMovieRepo.findByIdMovie(userMovie.getIdMovie());	
 		} else {
 			lMovies = new LikedMovies(userMovie.getIdMovie(), userMovie.getMovieName(), userMovie.getYear());
+			
 			likedMovieRepo.save(lMovies);}
 		userSonar.getUserSonarCine().getUserLikedMovies().add(lMovies);
 		userSonarCineRepo.save(userSonar.getUserSonarCine());
@@ -144,7 +145,6 @@ public class UserSonarCinematicController {
 	 */
 
 	@DeleteMapping("likedmovie/delete/{username}/{movieId}")
-	//void deleteLikedMovieToProfile(@PathVariable("username") String username, @PathVariable("movieId") Long movieId) {
 	void deleteLikedMovieToProfile(@PathVariable("username") String username, @PathVariable("movieId") Long movieId){
 
 		UserSonar userSonar = userRepository.findByUsername(username);
