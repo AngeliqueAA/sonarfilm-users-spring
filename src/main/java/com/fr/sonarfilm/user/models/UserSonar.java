@@ -31,7 +31,6 @@ public class UserSonar {
 	@NotNull
 	@NotBlank
 	@Size(min = 6)
-	@JsonIgnore
 	private String password;
 	
 	@NotNull
