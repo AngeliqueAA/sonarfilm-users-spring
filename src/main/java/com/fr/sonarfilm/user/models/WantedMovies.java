@@ -12,33 +12,15 @@ import javax.persistence.ManyToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class WantedMovies {
+public class WantedMovies extends Movie {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
 
-	
 	@ManyToMany(mappedBy = "userMovies",fetch = FetchType.LAZY)
 	@JsonIgnore
     Set<UserSonarCinematicProfile> userCine;
-	
-	private String year;
-	private Long idMovie;
-	private String movieName;
-	
-	
-	
-	
-
-	public Set<UserSonarCinematicProfile> getUserCine() {
-		return userCine;
-	}
-
-	
 		
-		public WantedMovies() {
-		}
+		
+		public WantedMovies() {}
 	
 	public WantedMovies(Long idMovie, String movieName, String year) {
 
@@ -48,19 +30,15 @@ public class WantedMovies {
 	}
 
 
+	public Set<UserSonarCinematicProfile> getUserCine() {
+		return userCine;
+	}
 
 	public void setUserCine(Set<UserSonarCinematicProfile> userCine) {
 		this.userCine = userCine;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
+	
 	public String getYear() {
 		return year;
 	}

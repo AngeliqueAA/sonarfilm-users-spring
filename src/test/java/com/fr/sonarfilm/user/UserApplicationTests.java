@@ -2,6 +2,7 @@ package com.fr.sonarfilm.user;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -15,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -89,7 +91,18 @@ class UserApplicationTests {
 	}
 
 	 
-	 
+/*	 @Test
+	 @WithMockUser("ella")
+	 public void getMessageWithMockUserCustomUsername() throws Exception {
+		 
+		 this.mockMvc
+		 .perform(MockMvcRequestBuilders.get("/apiusers/users/ella") 
+		.accept(MediaType.APPLICATION_JSON))
+		 .andExpect(status().isOk());
+		 	 
+
+	 };
+*/	 
 	 @Test
 	    public void whenConvertUserEntityToMovieDto_thenCorrect() {
 		 UserSonarDTO userSonarDTO = new UserSonarDTO();
