@@ -12,20 +12,13 @@ import javax.persistence.ManyToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class SeenMovies {
+public class SeenMovies extends Movie {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
 	
 	
 	@ManyToMany(mappedBy = "userSeenMovies",fetch = FetchType.LAZY)
 	@JsonIgnore
     Set<UserSonarCinematicProfile> userCine;
-	
-	private String year;
-	private Long idMovie;
-	private String movieName;
 	
 	
 	

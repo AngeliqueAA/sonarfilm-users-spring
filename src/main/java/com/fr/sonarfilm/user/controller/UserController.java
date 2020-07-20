@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -56,4 +57,13 @@ public class UserController {
 	    void addUser(@RequestBody UserSonar user) {
 	        userRepository.save(user);
 	    }
+	
+	
+	@PutMapping("/users/update")
+    public UserSonarDTO updateUser(@RequestBody UserSonar user) {
+		UserSonar userSonar = userRepository.findByUsername(user.getUsername());
+		userSonar.setMail(user.getMail());
+		UserSonar updatedUser =userRepository.save(userSonar);
+		return convertToDto(updatedUser);
+    }
 }
