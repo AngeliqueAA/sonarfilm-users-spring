@@ -55,18 +55,24 @@ public class UserSonarCinematicController {
 	void addWantedMovieToProfile(@RequestBody UserMovieWrapper userMovie)
 
 	{
+		
+		
+try {
+	UserSonar userSonar = userRepository.findByUsername(userMovie.getUsername());
+	boolean moviesExistsOrNot = wantedMovieRepo.existsByIdMovie(userMovie.getIdMovie());
+	WantedMovies wMovies = new WantedMovies();
+	if(moviesExistsOrNot) {
+		wMovies = wantedMovieRepo.findByIdMovie(userMovie.getIdMovie());	
+	} else {
+		wMovies = new WantedMovies(userMovie.getIdMovie(), userMovie.getMovieName(), userMovie.getYear());
+		wantedMovieRepo.save(wMovies);}
+	userSonar.getUserSonarCine().getUserMovies().add(wMovies);
+	userSonarCineRepo.save(userSonar.getUserSonarCine()); } 
 
-
-		UserSonar userSonar = userRepository.findByUsername(userMovie.getUsername());
-		boolean moviesExistsOrNot = wantedMovieRepo.existsByIdMovie(userMovie.getIdMovie());
-		WantedMovies wMovies = new WantedMovies();
-		if(moviesExistsOrNot) {
-			wMovies = wantedMovieRepo.findByIdMovie(userMovie.getIdMovie());	
-		} else {
-			wMovies = new WantedMovies(userMovie.getIdMovie(), userMovie.getMovieName(), userMovie.getYear());
-			wantedMovieRepo.save(wMovies);}
-		userSonar.getUserSonarCine().getUserMovies().add(wMovies);
-		userSonarCineRepo.save(userSonar.getUserSonarCine());
+catch (Exception e) {
+	e.getMessage();
+}
+		
 
 	}
 
