@@ -47,9 +47,10 @@ public class JwtUserDetailsService implements UserDetailsService {
 		String newUserUsername = user.getUsername();
 		String newUsermail = user.getMail();
 
-		if(userRepo.existsByUsername(newUserUsername)) {return (newUserUsername+"déjà utilisé");} 
+		if(userRepo.existsByUsername(newUserUsername)) {return (newUserUsername+" déjà utilisé");} 
 		if(newUserUsername.isEmpty() || newUserUsername.isEmpty()) {return ("Rentrez un pseudo");}
 		if(user.getPassword().isEmpty() || user.getPassword().isEmpty()) {return ("Rentrez un mot de passe");}
+		if(user.getMail().isEmpty() || user.getMail().isEmpty()) {return ("Rentrez une adresse mail");}
 
 		else {
 			UserSonarInformationProfile userSonarInfo = new UserSonarInformationProfile();
@@ -67,7 +68,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 			userCineProfile.setUserSonar(newUser);
 			userRepo.save(newUser);
 
-			return (newUserUsername+ "crée");
+			return (newUserUsername+ " crée");
 		}
 	}
 
